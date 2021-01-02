@@ -9,60 +9,75 @@ class transactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          return Card(
-            child: Row(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 2,
-                      color: Theme.of(context).primaryColorDark,
-                    ),
-                  ),
-                  padding: EdgeInsets.all(5),
-                  child: Text(
-                    '\$${_userTransactions[index].amount.toStringAsFixed(2)}',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColorDark,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  ),
+      child: _userTransactions.isEmpty
+          ? Column(
+              children: [
+                Text(
+                  'No transaction found',
+                  style: Theme.of(context).textTheme.headline6,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      _userTransactions[index].title,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      _userTransactions[index].date.year.toString() +
-                          "-" +
-                          _userTransactions[index].date.month.toString() +
-                          "-" +
-                          _userTransactions[index].date.day.toString(),
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
+                Container(
+                  margin: EdgeInsets.only(
+                    top: 20,
+                  ),
+                  height: 200,
+                  child: Image.asset(
+                    'assets/images/waiting.png',
+                    fit: BoxFit.contain,
+                  ),
                 )
               ],
+            )
+          : ListView.builder(
+              itemBuilder: (context, index) {
+                return Card(
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 2,
+                            color: Theme.of(context).primaryColorDark,
+                          ),
+                        ),
+                        padding: EdgeInsets.all(5),
+                        child: Text(
+                          '\$${_userTransactions[index].amount.toStringAsFixed(2)}',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColorDark,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            _userTransactions[index].title,
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                          Text(
+                            _userTransactions[index].date.year.toString() +
+                                "-" +
+                                _userTransactions[index].date.month.toString() +
+                                "-" +
+                                _userTransactions[index].date.day.toString(),
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                );
+              },
+              itemCount: _userTransactions.length,
             ),
-          );
-        },
-        itemCount: _userTransactions.length,
-      ),
     );
   }
 }

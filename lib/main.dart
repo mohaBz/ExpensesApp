@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'dart:wasm';
 
 import 'package:ExpensesApp/widgets/new_transaction.dart';
@@ -19,6 +20,23 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           accentColor: Colors.tealAccent,
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: 'Quicksand',
+          textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+          appBarTheme: AppBarTheme(
+            textTheme: ThemeData.light().textTheme.copyWith(
+                  headline6: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+          ),
         ),
         home: MyHomePage());
   }
@@ -30,10 +48,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<transaction> _userTransactions = [
-    transaction(title: 'food', amount: 80.99, id: 'id1', date: DateTime.now()),
-    transaction(title: 'gaz', amount: 40.00, id: 'id2', date: DateTime.now()),
-  ];
+  final List<transaction> _userTransactions = [];
   void _addNewTransaction(String title, double amount) {
     final newTransaction = transaction(
       title: title,
