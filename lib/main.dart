@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'dart:wasm';
 
+import 'package:ExpensesApp/widgets/chart.dart';
 import 'package:ExpensesApp/widgets/new_transaction.dart';
 import 'package:ExpensesApp/widgets/transactionList.dart';
 import 'package:ExpensesApp/models/transaction.dart';
@@ -49,6 +50,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<transaction> _userTransactions = [];
+
+  List<transaction> get recentTransactions {
+    return _userTransactions.where((element) {
+      return element.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
+
   void _addNewTransaction(String title, double amount) {
     final newTransaction = transaction(
       title: title,
@@ -90,14 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Container(
-                width: double.infinity,
-                child: Card(
-                  color: Colors.blue,
-                  child: Text("Chart"),
-                  elevation: 5,
-                ),
-              ),
+              Chart(recentTransactions),
               transactionList(_userTransactions)
             ],
           ),
