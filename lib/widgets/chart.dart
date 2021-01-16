@@ -7,7 +7,7 @@ class Chart extends StatelessWidget {
   List<transaction> recentTransactions;
   Chart(this.recentTransactions);
   double get totalWeekAmount {
-    double sum = 0.0;
+    double sum = 20.0;
     recentTransactions.forEach((element) {
       sum += element.amount;
     });
@@ -33,7 +33,7 @@ class Chart extends StatelessWidget {
         'day': DateFormat.E().format(weekDay).substring(0, 1),
         'amount': totalSum,
       };
-    }).toList();
+    }).reversed.toList();
   }
 
   @override
