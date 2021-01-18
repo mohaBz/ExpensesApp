@@ -50,7 +50,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<transaction> _userTransactions = [];
+  final List<transaction> _userTransactions = [
+    transaction(amount: 50, title: "sdsd", date: DateTime.now(), id: "152"),
+    transaction(amount: 50, title: "sdsd", date: DateTime.now(), id: "152"),
+    transaction(amount: 50, title: "sdsd", date: DateTime.now(), id: "152"),
+    transaction(amount: 50, title: "sdsd", date: DateTime.now(), id: "152"),
+    transaction(amount: 50, title: "sdsd", date: DateTime.now(), id: "152"),
+    transaction(amount: 50, title: "sdsd", date: DateTime.now(), id: "152"),
+    transaction(amount: 50, title: "sdsd", date: DateTime.now(), id: "152")
+  ];
 
   void deleteTransaction(String id) {
     setState(() {
@@ -92,16 +100,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final appBar = AppBar(
+      title: Text("Expenses App"),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.add),
+          onPressed: () => showAddTransactionSheet(context),
+        )
+      ],
+    );
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Expenses App"),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => showAddTransactionSheet(context),
-          )
-        ],
-      ),
+      appBar: appBar,
       body: Container(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -109,8 +118,22 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Chart(recentTransactions),
-              transactionList(_userTransactions, deleteTransaction)
+              Container(
+                height: (MediaQuery.of(context).size.height -
+                        appBar.preferredSize.height -
+                        MediaQuery.of(context).padding.top) *
+                    0.3,
+                child: Chart(recentTransactions),
+              ),
+              Container(
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height -
+                          MediaQuery.of(context).padding.top) *
+                      0.7,
+                  child: transactionList(
+                    _userTransactions,
+                    deleteTransaction,
+                  ))
             ],
           ),
         ),
