@@ -59,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
     transaction(amount: 50, title: "sdsd", date: DateTime.now(), id: "152"),
     transaction(amount: 50, title: "sdsd", date: DateTime.now(), id: "152")
   ];
+  bool showChart = true;
 
   void deleteTransaction(String id) {
     setState(() {
@@ -98,6 +99,12 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
+  void switchPresed(bool value) {
+    setState(() {
+      showChart = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
@@ -109,6 +116,18 @@ class _MyHomePageState extends State<MyHomePage> {
         )
       ],
     );
+    final isLandScape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+    final txList = Container(
+      height: (MediaQuery.of(context).size.height -
+              appBar.preferredSize.height -
+              MediaQuery.of(context).padding.top) *
+          0.7,
+      child: transactionList(
+        _userTransactions,
+        deleteTransaction,
+      ),
+    );
     return Scaffold(
       appBar: appBar,
       body: Container(
@@ -118,22 +137,37 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Container(
-                height: (MediaQuery.of(context).size.height -
-                        appBar.preferredSize.height -
-                        MediaQuery.of(context).padding.top) *
-                    0.3,
-                child: Chart(recentTransactions),
-              ),
-              Container(
+              if (isLandScape)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Show Chart"),
+                    Switch(
+                        value: showChart,
+                        onChanged: (value) {
+                          switchPresed(value);
+                        })
+                  ],
+                ),
+              if (!isLandScape)
+                Container(
                   height: (MediaQuery.of(context).size.height -
                           appBar.preferredSize.height -
                           MediaQuery.of(context).padding.top) *
-                      0.7,
-                  child: transactionList(
-                    _userTransactions,
-                    deleteTransaction,
-                  ))
+                      0.3,
+                  child: Chart(recentTransactions),
+                ),
+              if (!isLandScape) txList,
+              if (isLandScape)
+                showChart
+                    ? Container(
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height -
+                                MediaQuery.of(context).padding.top) *
+                            0.7,
+                        child: Chart(recentTransactions),
+                      )
+                    : txList
             ],
           ),
         ),

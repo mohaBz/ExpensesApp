@@ -9,24 +9,26 @@ class transactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _userTransactions.isEmpty
-        ? Column(
-            children: [
-              Text(
-                'No transaction found',
-                style: Theme.of(context).textTheme.headline6,
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  top: 20,
+        ? LayoutBuilder(builder: (context, constraints) {
+            return Column(
+              children: [
+                Text(
+                  'No transaction found',
+                  style: Theme.of(context).textTheme.headline6,
                 ),
-                height: 200,
-                child: Image.asset(
-                  'assets/images/waiting.png',
-                  fit: BoxFit.contain,
-                ),
-              )
-            ],
-          )
+                Container(
+                  margin: EdgeInsets.only(
+                    top: 20,
+                  ),
+                  height: constraints.maxHeight * 0.6,
+                  child: Image.asset(
+                    'assets/images/waiting.png',
+                    fit: BoxFit.contain,
+                  ),
+                )
+              ],
+            );
+          })
         : ListView.builder(
             itemBuilder: (context, index) {
               return Card(
