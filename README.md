@@ -3,7 +3,7 @@
  
 # Screenshots
 ## Portrait
-<img src="/screenshots/portrait/empty_list.jpg" width="250" height="400"> ![image 1](/screenshots/portrait/full_list.jpg?raw=false) ![image 1](/screenshots/portrait/add.jpg?raw=false) ![image 1](/screenshots/portrait/add.jpg?raw=false)
+<img src="/screenshots/portrait/empty_list.jpg" width="360" height="600"> <img src="/screenshots/portrait/full_list.jpg" width="360" height="600">  <img src="/screenshots/portrait/add.jpg" width="360" height="600">  <img src="/screenshots/portrait/pick_date.jpg" width="360" height="600"> 
 ## Landscape
 ![image 1](/screenshots/landscape/list.jpg?raw=false) ![image 1](/screenshots/landscape/chart.jpg?raw=false)
 
