@@ -141,7 +141,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Show Chart"),
+                    Text("Show Chart",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        )),
                     Switch.adaptive(
                         activeColor: Theme.of(context).accentColor,
                         value: showChart,
@@ -173,7 +176,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      floatingActionButton: Platform.isIOS
+      floatingActionButton: Platform.isIOS ||
+              MediaQuery.of(context).orientation == Orientation.landscape
           ? Container()
           : FloatingActionButton(
               child: Icon(Icons.add),
