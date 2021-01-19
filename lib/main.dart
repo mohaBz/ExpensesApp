@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'dart:wasm';
+import 'dart:io';
 
 import 'package:ExpensesApp/widgets/chart.dart';
 import 'package:ExpensesApp/widgets/new_transaction.dart';
@@ -142,7 +142,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Show Chart"),
-                    Switch(
+                    Switch.adaptive(
+                        activeColor: Theme.of(context).accentColor,
                         value: showChart,
                         onChanged: (value) {
                           switchPresed(value);
@@ -172,10 +173,12 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => showAddTransactionSheet(context),
-      ),
+      floatingActionButton: Platform.isIOS
+          ? Container()
+          : FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () => showAddTransactionSheet(context),
+            ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
