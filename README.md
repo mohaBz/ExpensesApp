@@ -3,9 +3,9 @@
  
 # Screenshots
 ## Portrait
-![image 1](/screenshots/portrait/empty_list.PNG?raw=false) ![image 1](/screenshots/portrait/full_list.PNG?raw=false) ![image 1](/screenshots/portrait/add.PNG?raw=false) ![image 1](/screenshots/portrait/add.PNG?raw=false)
+![image 1](/screenshots/portrait/empty_list.jpg?raw=false) ![image 1](/screenshots/portrait/full_list.jpg?raw=false) ![image 1](/screenshots/portrait/add.jpg?raw=false) ![image 1](/screenshots/portrait/add.jpg?raw=false)
 ## Landscape
-![image 1](/screenshots/landscape/list.PNG?raw=false) ![image 1](/screenshots/landscape/chart.PNG?raw=false)
+![image 1](/screenshots/landscape/list.jpg?raw=false) ![image 1](/screenshots/landscape/chart.jpg?raw=false)
 
 # Library 
  - flutter SDK
