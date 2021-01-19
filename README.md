@@ -1,16 +1,18 @@
 # ExpensesApp
+ A flutter app That helps you keep track of your recent expenses as the name suggested, You can add a transaction with a title amount and date, and keeps track of last week and how much you spent each day of the week. the app is responsive and has some adaptive widget for native look on ios and android,this app was made following the Acadimind.
+ 
+# Screenshots
+## Portrait
+![image 1](/screenshots/portrait/empty_list.PNG?raw=false) ![image 1](/screenshots/portrait/full_list.PNG?raw=false) ![image 1](/screenshots/portrait/add.PNG?raw=false) ![image 1](/screenshots/portrait/add.PNG?raw=false)
+## Landscape
+![image 1](/screenshots/landscape/list.PNG?raw=false) ![image 1](/screenshots/landscape/chart.PNG?raw=false)
 
-A new Flutter project.
+# Library 
+ - flutter SDK
+ - [intl](https://pub.dev/packages/intl)
+ 
+ 
+## Used Matrial design By Google
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Developed By
+ Mohamed Bouzouaelgh
